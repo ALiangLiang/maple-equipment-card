@@ -48,7 +48,9 @@ const MapleRingCard = () => {
   const [move, setMove] = useState(0);
   const [jump, setJump] = useState(0);
   const [attack, setAttack] = useState(105);
+  const [magicAttack, setMagicAttack] = useState(0);
   const [defense, setDefense] = useState(1);
+  const [magicDefense, setMagicDefense] = useState(0);
   const [avoidability, setAvoidability] = useState(3);
   const [classAccess, setClassAccess] = useState<Record<ClassKey, boolean>>({
     初心者: false,
@@ -210,7 +212,9 @@ const MapleRingCard = () => {
     if (move) stats.push(`移動速度：+${move}`);
     if (jump) stats.push(`跳躍力：+${jump}`);
     if (attack) stats.push(`攻擊力：+${attack}`);
+    if (magicAttack) stats.push(`魔法攻擊力：+${magicAttack}`);
     if (defense) stats.push(`防禦力：+${defense}`);
+    if (magicDefense) stats.push(`魔法防禦力：+${magicDefense}`);
     if (avoidability) stats.push(`迴避率：+${avoidability}`);
     if (scrollAvailable) stats.push(`可使用卷軸數：${scrollAvailable}`);
 
@@ -251,7 +255,7 @@ const MapleRingCard = () => {
     Promise.all(promises).then(() => {
       ctx.drawImage(tempCanvas, 0, 0);
     })
-  }, [name, nameColor, subtitle, level, speed, str, dex, int, luk, hp, mp, move, jump, attack, defense, avoidability, classAccess, category, itemType, icon, neededStr, neededDex, neededInt, neededLuk, scrollAvailable]);
+  }, [name, nameColor, subtitle, level, speed, str, dex, int, luk, hp, mp, move, jump, attack, magicAttack, defense, magicDefense, avoidability, classAccess, category, itemType, icon, neededStr, neededDex, neededInt, neededLuk, scrollAvailable]);
 
   return (
     <div className="flex flex-col items-center gap-4 p-4 min-h-screen" style={{ backgroundColor: background }}>
@@ -321,8 +325,16 @@ const MapleRingCard = () => {
             <Input type="number" placeholder="攻擊力" value={attack} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAttack(parseInt(e.target.value))} />
           </div>
           <div>
+            <label>魔法攻擊力</label>
+            <Input type="number" placeholder="魔法攻擊力" value={magicAttack} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMagicAttack(parseInt(e.target.value))} />
+          </div>
+          <div>
             <label>防禦力</label>
             <Input type="number" placeholder="防禦力" value={defense} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDefense(parseInt(e.target.value))} />
+          </div>
+          <div>
+            <label>魔法防禦力</label>
+            <Input type="number" placeholder="魔法防禦力" value={magicDefense} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMagicDefense(parseInt(e.target.value))} />
           </div>
           <div>
             <label>迴避率</label>
