@@ -216,7 +216,7 @@ const MapleRingCard = () => {
     if (defense) stats.push(`防禦力：+${defense}`);
     if (magicDefense) stats.push(`魔法防禦力：+${magicDefense}`);
     if (avoidability) stats.push(`迴避率：+${avoidability}`);
-    if (scrollAvailable) stats.push(`可使用卷軸數：${scrollAvailable}`);
+    if (scrollAvailable) stats.push(`可使用捲軸數：${scrollAvailable}`);
 
     stats.forEach((line) => {
       tempCtx.fillText(line, tempCanvas.width / 2, (y += 30));
@@ -341,8 +341,8 @@ const MapleRingCard = () => {
             <Input type="number" placeholder="迴避率" value={avoidability} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAvoidability(parseInt(e.target.value))} />
           </div>
           <div>
-            <label>可使用卷軸數</label>
-            <Input type="number" placeholder="可使用卷軸數" value={scrollAvailable} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setScrollAvailable(parseInt(e.target.value))} />
+            <label>可使用捲軸數</label>
+            <Input type="number" placeholder="可使用捲軸數" value={scrollAvailable} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setScrollAvailable(parseInt(e.target.value))} />
           </div>
         </div>
         <div>
